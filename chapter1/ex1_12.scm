@@ -3,10 +3,13 @@
 ;; inside the triangle is the sum of the two numbers above it. Write
 ;; a procedure that computes elements of Pascal's triangle by means of
 ;; a recursive process.
-
+#lang sicp
 (define (pascal row col)
   (cond ((or (= col 1)
              (= row 1)
-             (= col row)
+             (= col row))
              1)
-         (else ()))))
+         (else (+ (pascal (- row 1) (- col 1))
+                  (pascal (- row 1) col)))))
+
+(pascal 5 4)
